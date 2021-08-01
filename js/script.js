@@ -3,18 +3,18 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
-
+// This array stores quote objects. 
+// Each object has a quote and source property.
+// Each object may or may not contain a citation or year property. 
 var quotes = [
   {
     quote: `Do not go gentle into that good night,
             Old age should burn and rave at close of day;
             Rage, rage against the dying of the light.`,
     source: "Dylan Thomas",
-    year: "1951"
+    citation: "Do Not Go Gentle Into That Good Night",
+    year: "1951",
   },
   {
     quote: `Is Pious pious 'cause God loves pious?
@@ -24,14 +24,16 @@ var quotes = [
     year: "2011"
   },
   {
-    quote:   `I sometimes have nightmares about a world of echoes 
+    quote:  `I sometimes have nightmares about a world of echoes 
             in which there are only echoes, and echoes of echoes, 
             and echoes of echoes of echoes—reverberating forever down 
             the empty corridors of my mind.`,
-    source: "Alan Watts"
+    source: "Alan Watts",
+    citation: "n.d.",
+    year: "Individual and the World"
   },
   {
-    quote:   `The nitrogen in our DNA, the calcium in our teeth, 
+    quote:  `The nitrogen in our DNA, the calcium in our teeth, 
             the iron in our blood, the carbon in our apple pies were 
             made in the interiors of collapsing stars. We are made of starstuff.`,
     source: "Carl Sagan",
@@ -39,8 +41,10 @@ var quotes = [
     year: "1980"
   },
   {
-    quote: `That which can be asserted without evidence, can be dismissed without evidence.`,
-    source: "Christopher Hitchens"
+    quote: `What can be asserted without evidence can also be dismissed without evidence.`,
+    source: "Christopher Hitchens",
+    citation: "Slate Magazine",
+    year: "2003"
   },
   {
     quote: `And these children that you spit on
@@ -56,24 +60,39 @@ var quotes = [
             himself does not become a monster. And if you gaze long into an abyss, 
             the abyss also gazes into you`,
     source: "Friedrich Nietzsche",
-    
+    citation: "Beyond Good and Evil",
+    year: "1886"
+
   }
 ];
 
 
 
-
-
-
-
-
-/***
- * `printQuote` function
-***/
-
-function printQuote(){
-
+// This function returns a random quote object
+// from the quote object lsit. 
+function getRandomQuote(){
+  randomNumber = Math.floor(Math.random() * quotes.length);
+  return quotes[randomNumber];
 }
+
+
+// This function prints a random quote to screen.
+function printQuote(){
+  const currentQuote = getRandomQuote();
+  let html = `<p class="quote">`;
+  html += currentQuote.quote + '<p>';
+  html += `<p class="source">${currentQuote.source}`;
+  if (currentQuote.hasOwnProperty('citation')){
+    html += `<span class="citation">${currentQuote.citation}</span>`;
+  }
+
+  if (currentQuote.hasOwnProperty('year')){
+    html += `<span class="year">${currentQuote.year}</span>`;
+  }
+  html += "</p>";
+  document.querySelector('.quote-box').innerHTML = html;
+}
+
 
 
 /***
