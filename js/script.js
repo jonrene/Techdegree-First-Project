@@ -5,12 +5,11 @@ project 1 - A Random Quote Generator
 
 
 // This array stores quote objects. 
-// Each object has a quote and source property.
-// Each object may or may not contain a citation or year property. 
+// Each object has a quote, source, citation, and year property.
 var quotes = [
   {
     quote: `Do not go gentle into that good night,
-            Old age should burn and rave at close of day;
+            Old age should burn and rave at close of day;\n
             Rage, rage against the dying of the light.`,
     source: "Dylan Thomas",
     citation: "Do Not Go Gentle Into That Good Night",
@@ -29,8 +28,8 @@ var quotes = [
             and echoes of echoes of echoes—reverberating forever down 
             the empty corridors of my mind.`,
     source: "Alan Watts",
-    citation: "n.d.",
-    year: "Individual and the World"
+    citation: "Individual and the World",
+    year: "n.d."
   },
   {
     quote:  `The nitrogen in our DNA, the calcium in our teeth, 
